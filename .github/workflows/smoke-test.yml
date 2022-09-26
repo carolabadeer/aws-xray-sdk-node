@@ -39,9 +39,13 @@ jobs:
       # Manually install the locally bundled packages first, then pull in other test dependencies from NPM
       # Remove the entire source code directory to force smoke test to depend on packed tarball
       - name: Run smoke test
-        run: |
-          cd smoke_test
-          npm install ../packages/full_sdk/${{ steps.package.outputs.full_sdk }}
-          npm install
-          rm -rf ../packages/
-          npm run test-smoke
+        # run: |
+        #   cd smoke_test
+        #   npm install ../packages/full_sdk/${{ steps.package.outputs.full_sdk }}
+        #   npm install
+        #   rm -rf ../packages/
+        #   npm run test-smoke
+          run: |
+            cd smoke_test
+            npm install
+            npm run test-smoke
