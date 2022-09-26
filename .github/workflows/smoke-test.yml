@@ -21,19 +21,20 @@ jobs:
       # Then aggregate all of those tarballs in the full_sdk package, to be used by smoke test
       - name: Pack SDK packages
         id: package
-        run: |
-          npm install typescript
-          core_tar=$(cd packages/core && npm pack | tail -1)
-          express_tar=$(cd packages/express && npm pack | tail -1)
-          mysql_tar=$(cd packages/mysql && npm pack | tail -1)
-          postgres_tar=$(cd packages/postgres && npm pack | tail -1)
-          cd packages/full_sdk
-          npm install ../core/$core_tar
-          npm install ../express/$express_tar
-          npm install ../mysql/$mysql_tar
-          npm install ../postgres/$postgres_tar
-          full_tar=$(npm pack | tail -1)
-          echo "::set-output name=full_sdk::$full_tar"
+        run: npm install
+        # run: |
+        #   npm install typescript
+        #   core_tar=$(cd packages/core && npm pack | tail -1)
+        #   express_tar=$(cd packages/express && npm pack | tail -1)
+        #   mysql_tar=$(cd packages/mysql && npm pack | tail -1)
+        #   postgres_tar=$(cd packages/postgres && npm pack | tail -1)
+        #   cd packages/full_sdk
+        #   npm install ../core/$core_tar
+        #   npm install ../express/$express_tar
+        #   npm install ../mysql/$mysql_tar
+        #   npm install ../postgres/$postgres_tar
+        #   full_tar=$(npm pack | tail -1)
+        #   echo "::set-output name=full_sdk::$full_tar"
 
       # Manually install the locally bundled packages first, then pull in other test dependencies from NPM
       # Remove the entire source code directory to force smoke test to depend on packed tarball
