@@ -45,7 +45,7 @@ jobs:
         #   npm install
         #   rm -rf ../packages/
         #   npm run test-smoke
-          run: |
-            cd smoke_test
-            npm install
-            npm run test-smoke
+        run: |
+          cd smoke_test
+          npm install
+          npm run test-smoke
