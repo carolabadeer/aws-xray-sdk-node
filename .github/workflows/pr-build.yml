@@ -23,7 +23,7 @@ jobs:
           - 18.x
         include:
           - os: ubuntu-latest
-            node-version: 16.x
+            node-version: 18.x
             coverage: true
     steps:
       - name: Checkout AWS XRay SDK Node Repository @ default branch latest
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
 
       - name: Cache NPM modules
         uses: actions/cache@v3
